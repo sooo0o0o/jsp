@@ -1,13 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-<body>
-    <div id="wrapper">
-        <header>
-            <h3>
-                <a href="/index.html" class="title">Board Project</a>
-            </h3>
-        </header>
-        <main id="user">
+<main id="user">
             <section class="info">
                 <form action="#" method="post">
                     <h2 class="tit">회원정보 설정</h2>

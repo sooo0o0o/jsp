@@ -1,8 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	const result = ${result};
+	
+	if(result == 100){
+		alert('로그인 실패했습니다.\n 아이디와 비밀번호를 다시 확인하세요.');
+	}
+
+
+</script>
         <main id="user">
             <section class="login">
-                <form action="../article/list.html">                    
+                <form action="/jboard/user/login.do" method="post">                    
                     <table border="0">
                         <tr>
                             <td><img src="/jboard/images/login_ico_id.png" alt="아이디"/></td>
