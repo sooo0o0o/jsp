@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>글목록</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/jboard/css/style.css"/>
 </head>
 <body>
     <div id="wrapper">
@@ -44,7 +44,7 @@
                     <a href="#" class="next">다음</a>
                 </div>
 
-                <a href="./write.html" class="btn btnWrite">글쓰기</a>
+                <a href="/jboard/article/write.do" class="btn btnWrite">글쓰기</a>
                 
             </section>
         </main>

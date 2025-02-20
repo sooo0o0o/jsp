@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>글쓰기</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/jboard/css/style.css"/>
 </head>
 <body>
     <div id="wrapper">
@@ -14,7 +14,8 @@
                 <nav>
                     <h1>글쓰기</h1>
                 </nav>
-                <form action="#">
+                <form action="/jboard/article/write.do" method="post" enctype="multipart/form-data">
+                	<input type="hidden" name="writer" value="${sessUser.uid}" readonly>
                     <table border="0">                        
                         <tr>
                             <th>제목</th>
@@ -29,13 +30,17 @@
                         <tr>
                             <th>파일</th>
                             <td>
-                                <input type="file" name="file" />
+                            	<p style="margin-bottom: 6px;">
+                            		최대 2개 파일 첨부 가능, 각 파일 당 최대 10MB
+                            	</p>
+                                <input type="file" name="file1" />
+                                <input type="file" name="file2" />
                             </td>
                         </tr>
                     </table>
                     
                     <div>
-                        <a href="./list.html" class="btn btnCancel">취소</a>
+                        <a href="/jboard/article/list.html" class="btn btnCancel">취소</a>
                         <input type="submit" value="작성완료" class="btn btnComplete"/>
                     </div>
                 </form>
