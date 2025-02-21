@@ -18,7 +18,7 @@
 			<th>이름</th>
 			<th>생년월일</th>
 			<th>휴대폰</th>
-			<th>나이</th>
+			<th>주소</th>
 			<th>관리</th>
 		</tr>
 		
@@ -27,8 +27,8 @@
 				<td>${dto.getUid()}</td>
 				<td>${dto.getName()}</td>
 				<td>${dto.getBirth()}</td>
-				<td>${dto.hp}</td>
-				<td>${dto.age}</td>
+				<td>${dto.getHp()}</td>
+				<td>${dto.getAddr()}</td>
 				<td>
 					<a href="/ch10/user3/modify.do?uid=${dto.uid}">수정</a>
 					<a href="/ch10/user3/remove.do?uid=${dto.uid}">삭제</a>

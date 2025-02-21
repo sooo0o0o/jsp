@@ -6,6 +6,7 @@ public class User2DTO {
 	private String name;
 	private String birth;
 	private String addr;
+	
 	public String getUid() {
 		return uid;
 	}

@@ -25,8 +25,8 @@
 			<tr>
 				<td>${dto.getUid()}</td>
 				<td>${dto.getName()}</td>
-				<td>${dto.hp}</td>
-				<td>${dto.age}</td>
+				<td>${dto.getHp()}</td>
+				<td>${dto.getAge()}</td>
 				<td>
 					<a href="/ch10/user1/modify.do?uid=${dto.uid}">수정</a>
 					<a href="/ch10/user1/remove.do?uid=${dto.uid}">삭제</a>
