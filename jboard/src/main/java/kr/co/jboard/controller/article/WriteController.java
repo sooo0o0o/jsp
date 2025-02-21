@@ -1,6 +1,7 @@
 package kr.co.jboard.controller.article;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import kr.co.jboard.dto.ArticleDTO;
+import kr.co.jboard.dto.FileDTO;
 import kr.co.jboard.service.ArticleService;
 import kr.co.jboard.service.FileService;
 
@@ -41,21 +43,30 @@ public class WriteController extends HttpServlet {
 		String regip = req.getRemoteAddr();	//사용자 IP 주소
 		
 		//파일 업로드 서비스 호출
-		fileService.uploadFile(req);
+		List<FileDTO> files = fileService.uploadFile(req);
 		
 		
 		//DTO 생성
 		ArticleDTO dto = new ArticleDTO();
 		dto.setTitle(title);
 		dto.setContent(content);
+		dto.setFile(files.size());
 		dto.setWriter(writer);
 		dto.setRegip(regip);
 		
 		logger.debug(dto.toString());
 		
 		
-		//서비스 호출
-		service.registerArticle(dto);
+		//글 등록하기 서비스 호출
+		int no = service.registerArticle(dto);
+		
+		//파일 등록 서비스 호출
+		for(FileDTO fileDTO : files) {
+			fileDTO.setAno(no);
+			fileService.registerFile(fileDTO);
+			
+			
+		}
 		
 		//이동
 		resp.sendRedirect("/jboard/article/list.do");

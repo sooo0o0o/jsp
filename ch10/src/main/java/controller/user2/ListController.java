@@ -10,13 +10,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.User1Service;
+import service.User2Service;
 
 @WebServlet("/user2/list.do")
 public class ListController extends HttpServlet {
 	
 	private static final long serialVersionUID = -2651683800821644616L;
-	private User1Service service = User1Service.getInstance();
+	private User2Service service = User2Service.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

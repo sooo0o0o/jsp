@@ -11,10 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.User2Service;
 
-@WebServlet("/user2/register.do")
-public class RegisterController extends HttpServlet{
+@WebServlet("/user2/modify.do")
+public class ModifyController extends HttpServlet{
 	
-	private static final long serialVersionUID = -4778498858823606569L;
+	private static final long serialVersionUID = -4779498858723606569L;
 	
 	//서비스 불러오기
 	private User2Service service = User2Service.getInstance();
@@ -22,8 +22,17 @@ public class RegisterController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//데이터 수신
+		String uid = req.getParameter("uid");
+		
+		//수정 데이터 조회
+		User2DTO dto = service.findUser2(uid);
+		
+		//데이터 공유
+		req.setAttribute("dto", dto);		
+		
 		//view forward
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user2/register.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user2/modify.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

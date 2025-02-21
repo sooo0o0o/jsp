@@ -30,12 +30,23 @@ public class SQL {
 											+ "`regDate`=NOW()";
 	
 	//articles
+	public static final String SELECT_MAX_NO = "select MAX(`no`) from `article`"; //최신 업로드된 글의 번호 = 방금 업로드 한 article 의 no
+	
 	public static final String INSERT_ARTICLE = "insert into `article` set "
 												+"`title`=?,"
 												+"`content`=?,"
+												+"`file`=?,"
 												+"`writer`=?,"
 												+"`regip`=?,"
 												+"`wdate`=NOW()";
+	
+	//files
+	public static final String INSERT_FILE = "insert into `file` set"
+											+"`ano`=?,"
+											+"`oName`=?,"
+											+"`sName`=?,"											
+											+"`rdate`=NOW()";
+	
 	
 	
 	
