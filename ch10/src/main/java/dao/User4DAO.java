@@ -17,7 +17,7 @@ public class User4DAO extends DBHelper {
 	
 	//기본 CRUD
 	
-	public void instertUser4(User4DTO dto) {
+	public void insertUser4(User4DTO dto) {
 		try {
 			conn = getConnection();
 			psmt=conn.prepareStatement(SQL.INSERT_USER4);
@@ -33,8 +33,7 @@ public class User4DAO extends DBHelper {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
 	public User4DTO selectUser4(String uid) {
@@ -42,7 +41,7 @@ public class User4DAO extends DBHelper {
 		
 		try {
 			conn=getConnection();
-			psmt=conn.prepareStatement(SQL.SELECT_ALL_USER4);
+			psmt=conn.prepareStatement(SQL.SELECT_USER4);
 			psmt.setString(1, uid);
 			
 			rs = psmt.executeQuery();
@@ -76,7 +75,14 @@ public class User4DAO extends DBHelper {
 				User4DTO dto = new User4DTO();
 				dto.setUid(rs.getString(1));
 				dto.setName(rs.getString(2));
+				dto.setGender(rs.getString(3));
+				dto.setAge(rs.getInt(4));
+				dto.setHp(rs.getString(5));
+				dto.setAddr(rs.getString(6));
+				
+				dtos.add(dto);
 			}
+			closeAll();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -84,8 +90,39 @@ public class User4DAO extends DBHelper {
 		return dtos;
 	}
 
-	public void updateUser4() {}
+	public void updateUser4(User4DTO dto) {
+		try {
+			conn = getConnection();
+			
+			psmt = conn.prepareStatement(SQL.UPDATE_USER4);
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getGender());
+			psmt.setInt(3, dto.getAge());
+			psmt.setString(4, dto.getHp());
+			psmt.setString(5, dto.getAddr());
+			psmt.setString(6, dto.getUid());
+			psmt.executeUpdate();
+			closeAll();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
-	public void deleteUser4() {}
+	public void deleteUser4(String uid) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_USER4);
+			psmt.setString(1, uid);
+			psmt.executeUpdate();
+			closeAll();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+
+
 	
 }

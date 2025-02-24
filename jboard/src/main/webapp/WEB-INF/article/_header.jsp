@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <header>
             <h3>
-                <a href="/index.html" class="title">Board Project</a>
+                <a href="/jboard" class="title">Board Project</a>
             </h3>
             <p>
                 <a href="/jboard/user/info.do" class="info">${sessionScope.sessUser.nick}</a>님 반갑습니다.
