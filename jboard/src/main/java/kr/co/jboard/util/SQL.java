@@ -31,6 +31,15 @@ public class SQL {
 	
 	//articles
 	public static final String SELECT_MAX_NO = "select MAX(`no`) from `article`"; //최신 업로드된 글의 번호 = 방금 업로드 한 article 의 no
+	public static final String SELECT_COUNT_ARTICLE = "select count(*) from `article`";
+	public static final String SELECT_ARTICLE_WITH_FILE = "select "
+														+"a.*,"
+														+"f.*,"
+														+"u.`nick` "
+														+"from `article` AS a "
+														+"LEFT JOIN `file` AS f ON a.no = f.ano "
+														+"JOIN `user` AS u ON a.writer = u.uid "			
+														+"where a.`no`=?";
 	public static final String SELECT_ALL_ARTICLE = "select "
 													+ "a.*,"
 													+ "u.`nick` "
@@ -39,7 +48,22 @@ public class SQL {
 													+ "on a.writer = u.uid "
 													+ "order by `no` desc "
 													+ "limit ?, 10";
-	public static final String SELECT_COUNT_ARTICLE = "select count(*) from `article`";
+	public static final String SELECT_ALL_ARTICLE_BY_SEARCH = "SELECT "
+															+"a.*, "
+															+"u.`nick` "
+															+"FROM `article` AS a "
+															+"JOIN `user` AS u ON a.writer = u.uid ";
+	public static final String SELECT_COUNT_ARTICLE_FOR_SEARCH = "select count(*) from `article` ";
+	public static final String JOIN_FOR_SEARCH_NICK = "JOIN `user` as u ON a.writer = u.uid ";
+	
+	public static final String WHERE_FOR_SEARCH_TITLE 	= "WHERE `title` LIKE ? ";
+	public static final String WHERE_FOR_SEARCH_CONTENT = "WHERE `content` LIKE ? ";
+	public static final String WHERE_FOR_SEARCH_WRITER 	= "WHERE `nick` LIKE ? ";
+	
+	public static final String ORDER_FOR_SEARCH = "ORDER BY `no` DESC ";
+	
+	public static final String LIMIT_FOR_SEARCH = "LIMIT ?,10";
+
 	public static final String INSERT_ARTICLE = "insert into `article` set "
 												+"`title`=?,"
 												+"`content`=?,"
@@ -54,8 +78,9 @@ public class SQL {
 											+"`oName`=?,"
 											+"`sName`=?,"											
 											+"`rdate`=NOW()";
-	
-	
+	public static final String SELECT_FILE_BY_FNO = "select * from `file` where `fno`=?";
+	public static final String UPDATE_FILE_DOWNLOAD_COUNT = "UPDATE `file` SET `download` = `download` + 1 WHERE `fno`=?";
+	public static final String SELECT_EXIST_FILE_BY_ARTICLE = "SELECT * FROM file WHERE ano = ?";
 	
 	
 	

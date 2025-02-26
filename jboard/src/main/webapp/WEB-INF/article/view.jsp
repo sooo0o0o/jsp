@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,6 @@
 <body>
     <div id="wrapper">
         <%@ include file="./_header.jsp" %>
-        </header>
         <main id="article">
             <section class="view">
                 <nav>
@@ -17,25 +17,37 @@
                 </nav>
                 <table border="0">                    
                     <tr>
-                        <th>제목</th>
-                        <td><input type="text" name="title" value="제목입니다." readonly/></td>
+                        <th>제목</th>	
+                        <td><input type="text" name="title" value="${requestScope.articleDTO.title}" readonly/></td>
                     </tr>
                     <tr>
-                        <th>파일</th>
-                        <td><a href="#">2020년 상반기 매출자료.xls</a>&nbsp;<span>7</span>회 다운로드</td>
+                        <th>작성자</th>	
+                        <td><input type="text" name="writer" value="${requestScope.articleDTO.writer}(${articleDTO.nick})" readonly/></td>
                     </tr>
+                    <c:if test="${articleDTO.file > 0}">
+	                    <tr>
+	                        <th>파일</th>
+	                        <td>
+	                        	<c:forEach var="file" items="${articleDTO.files}">
+		                        	<p style="margin-top:6px;">
+		                        		<a href="/jboard/file/download.do?fno=${file.fno}">${file.oName}</a>&nbsp;<span>${file.download}</span>회 다운로드
+		                        	</p>
+	                        	</c:forEach>
+	                        </td>
+	                    </tr>
+	                </c:if>
                     <tr>
                         <th>내용</th>
                         <td>
-                            <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                            <textarea name="content" readonly>${articleDTO.content}</textarea>
                         </td>
                     </tr>                    
                 </table>
                 
                 <div>
                     <a href="#" class="btn btnRemove">삭제</a>
-                    <a href="./modify.html" class="btn btnModify">수정</a>
-                    <a href="./list.html" class="btn btnList">목록</a>
+                    <a href="./modify.do" class="btn btnModify">수정</a>
+                    <a href="/jboard/article/list.do" class="btn btnList">목록</a>
                 </div>
 
                 <!-- 댓글목록 -->

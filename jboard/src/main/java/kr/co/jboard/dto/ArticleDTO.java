@@ -1,5 +1,7 @@
 package kr.co.jboard.dto;
 
+import java.util.List;
+
 public class ArticleDTO {
 	
 	private int no;
@@ -13,7 +15,7 @@ public class ArticleDTO {
 	private String regip;
 	private String wdate;
 	
-	//추가필드
+	//추가필드(list)
 	private String nick;
 	
 	public String getNick() {
@@ -22,6 +24,35 @@ public class ArticleDTO {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
+	
+	//추가필드(search)
+	private String searchType;
+	private String keyword;
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	//추가필드(file)
+	private List<FileDTO> files;
+	
+	public List<FileDTO> getFiles() {
+		return files;
+	}
+	public void setFiles(List<FileDTO> files) {
+		this.files = files;
+	}
+	
+	//기본 속성 필드
 	public int getNo() {
 		return no;
 	}

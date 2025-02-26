@@ -42,7 +42,7 @@ public class LoginCheckFilter implements Filter {
 		String path = uri.substring(ctxPath.length());	// /article/*, /user/*
 		logger.debug("LoginCheckFilter...4");
 		
-		if(path.startsWith("/user") && !path.contains("logout.do")){
+		if(path.startsWith("/user") && !path.contains("logout.do") && !path.contains("info.do")) {
 			//로그인을 한 상태에서 /user/* 요청을 하는 경우
 			
 			
