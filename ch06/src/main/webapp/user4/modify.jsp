@@ -12,6 +12,7 @@
 	
 	<form action="/ch06/proc/modify.jsp" method="post">
 		<table border="1">
+		<!--
 			<tr>
 				<td>아이디</td>
 				<td><input type="text" name="uid" value="<%=user4.getUid() %>" readonly="readonly" ></td>
@@ -44,6 +45,7 @@
 					<input type="submit" value="등록하기">
 				</td>
 			</tr>
+			  -->
 		</table>
 	</form>
 </body>

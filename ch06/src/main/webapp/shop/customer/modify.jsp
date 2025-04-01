@@ -18,6 +18,8 @@
 	
 	<form action="/ch06/shop/customer/proc/modify.jsp" method="post">
 		<table border="1">
+		
+		<!--
 			<tr>
 				<td>고객아이디</td>
 				<td><input type="text" name="custId" value="<%=customer.getCustId() %>" placeholder="아이디 입력" readonly="readonly"></td>
@@ -39,7 +41,7 @@
 					<input type="submit" value="고객등록">
 				</td>
 			</tr>
-	
+	  -->
 		</table>
 	</form>
 	

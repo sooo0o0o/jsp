@@ -68,6 +68,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>user1::list</title>
+
 </head>
 <body>
 	<h3>user1 목록</h3>
@@ -92,11 +93,22 @@
 			<td><%= user1.getAge() %></td>
 			<td>
 				<a href="./modify.jsp?uid=<%=user1.getUid()%>">수정</a>
-				<a href="./delete.jsp?uid=<%=user1.getUid()%>">삭제</a>
+				<a class="delete" href="./proc/delete.jsp?uid=<%=user1.getUid()%>">삭제</a>
 			</td>
 		</tr>
 		<% } %>
 	</table>
+	<script>
+		document.querySelectorAll('.delete').forEach(button => {
+			button.addEventListener('click', function(e) {
+				e.preventDefault();
+				if(confirm('삭제 하시겠습니까?')){
+					window.location.href = this.getAttribute('href');
+				}
+				
+			})
+		})
+	</script>
 	
 </body>
 </html>
